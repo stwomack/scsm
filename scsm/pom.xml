@@ -14,7 +14,7 @@
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-stream-parent</artifactId>
 		<version>1.0.0.BUILD-SNAPSHOT</version>
-		<relativePath />
+		<!-- relativePath / -->
 	</parent>
 
 	<properties>
@@ -31,7 +31,7 @@
 
 	<modules>
 		<!-- common -->
-		<module>spring-cloud-stream-modules-dependencies</module>
+		<!-- module>spring-cloud-stream-modules-dependencies</module -->
 		<module>common</module>
 		<!-- sources in alphabetical order-->
 		<module>1-http-source</module>
