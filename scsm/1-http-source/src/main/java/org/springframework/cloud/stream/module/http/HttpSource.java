@@ -53,14 +53,13 @@ public class HttpSource {
 	@Autowired
 	private Source channels;
 
-//	@RequestMapping(path = "${pathPattern:/}", method = POST, consumes = { "text/*", "application/json" })
+	@RequestMapping(path = "${pathPattern:/}", method = POST, consumes = { "text/*", "application/json" })
 //	@RequestMapping(path = "${pathPattern:/}", method = POST, consumes = { "application/x-www-form-urlencoded", "text/*", "application/json" }, produces = "application/json; charset=UTF-8")
-	@RequestMapping(path = "${pathPattern:/}", method = POST, consumes = { "application/x-www-form-urlencoded", "text/*", "application/json" }, produces = "text/plain")
+//	@RequestMapping(path = "${pathPattern:/}", method = POST, consumes = { "application/x-www-form-urlencoded", "text/*", "application/json" }, produces = "text/plain")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void handleRequest(@RequestBody String body, @RequestHeader(HttpHeaders.CONTENT_TYPE) Object contentType) {
 		logger.info("POST: contentType::" + contentType + "; Body::" + body);	// ccb
-		//sendMessage(body, contentType);
-		sendMessage(body, (Object)"text/plain");
+		sendMessage(body, contentType);
 	}
 
 //	@RequestMapping(path = "${pathPattern:/}", method = POST, consumes = "*/*", produces = "application/json; charset=UTF-8")

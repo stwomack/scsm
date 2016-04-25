@@ -16,8 +16,9 @@
 
 package org.springframework.cloud.stream.module.transform;
 
-import org.slf4j.Logger;		// ccb
-import org.slf4j.LoggerFactory;	// ccb
+import org.slf4j.Logger;				// ccb
+import org.slf4j.LoggerFactory;				// ccb
+import com.fasterxml.jackson.databind.ObjectMapper;	// ccb
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -27,6 +28,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.messaging.Message;
 import java.util.Arrays;
+
 /**
  * A Processor module that transforms messages using a SpEL expression.
  *
@@ -44,8 +46,15 @@ public class TransformProcessor {
 	private TransformProcessorProperties properties;
 
 	@Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
-	public Object transform(Message<?> message) {
+	public Object transform(Message<?> message) throws com.fasterxml.jackson.core.JsonProcessingException {
 		logger.info("Transforming the data...maybe :) : " + message);
+		logger.info("Expression output: " + properties.getExpression().getValue(message));
+
+		// transform in JSON
+		ObjectMapper om = new ObjectMapper();
+		om.writeValueAsString(message);
+
+				
 		return properties.getExpression().getValue(message);
 	}
 
