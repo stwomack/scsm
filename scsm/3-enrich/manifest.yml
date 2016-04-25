@@ -1,0 +1,10 @@
+---
+applications:
+- name: enrich
+  memory: 512M
+  instances: 1
+  host: enrich
+  domain: cfapps.io
+  path: target/enrich-1.0.0.BUILD-SNAPSHOT-exec.jar
+  services:
+  - redis

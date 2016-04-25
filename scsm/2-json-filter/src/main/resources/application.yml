@@ -1,0 +1,16 @@
+server:
+  port: 8081
+spring:
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: SensorData
+        output:
+          destination: TransData
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          stream: DEBUG

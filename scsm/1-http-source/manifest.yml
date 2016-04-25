@@ -1,0 +1,10 @@
+---
+applications:
+- name: http-source
+  memory: 512M
+  instances: 1
+  host: http-source
+  domain: cfapps.io
+  path: target/http-source-1.0.0.BUILD-SNAPSHOT-exec.jar
+  services:
+  - redis

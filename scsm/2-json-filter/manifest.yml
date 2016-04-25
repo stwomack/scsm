@@ -1,0 +1,10 @@
+---
+applications:
+- name: transform
+  memory: 512M
+  instances: 1
+  host: transform
+  domain: cfapps.io
+  path: target/transform-processor-1.0.0.BUILD-SNAPSHOT-exec.jar
+  services:
+  - redis
